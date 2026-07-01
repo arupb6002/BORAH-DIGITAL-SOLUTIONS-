@@ -1,0 +1,116 @@
+/* ===========================================================
+   Borah Digital Solutions — responsive.css
+   Mobile-first breakpoint overrides
+   =========================================================== */
+
+/* ---------- Large desktop / laptop (≤1240px container already capped) ---------- */
+@media (max-width: 1100px) {
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+  .process-list { grid-template-columns: repeat(3, 1fr); row-gap: 40px; }
+  .process-list::before { display: none; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 960px) {
+  section { padding: 72px 0; }
+
+  .main-nav { display: none; }
+  .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+
+  .main-nav.open {
+    display: block;
+    position: absolute;
+    top: var(--header-height);
+    left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    padding: 12px 24px 24px;
+  }
+  .main-nav.open ul { flex-direction: column; gap: 4px; }
+  .main-nav.open .nav-link { display: block; padding: 12px 4px; }
+  .main-nav.open::after {
+    content: 'Get Free Consultation';
+    display: block;
+    margin-top: 12px;
+    text-align: center;
+    background: var(--color-secondary);
+    color: #fff;
+    padding: 13px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+  }
+
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { height: 360px; margin-top: 20px; order: -1; }
+  .hero-content h1 { font-size: 2.4rem; }
+
+  .about-inner { grid-template-columns: 1fr; }
+  .about-visual { max-width: 420px; margin: 0 auto; }
+  .about-content { text-align: left; }
+
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .portfolio-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
+
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; gap: 24px; }
+  .price-featured { transform: none; }
+
+  .testimonial-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+
+  .contact-inner { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; margin : 15px; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  section { padding: 56px 0; }
+
+  .section-head h2 { font-size: 1.6rem; }
+  .section-head { margin-bottom: 36px; }
+
+  .hero { padding: 32px 0 56px; }
+  .hero-content h1 { font-size: 2rem; }
+  .hero-sub { font-size: 1rem; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
+  .hero-visual { height: 300px; }
+  .mockup-desktop { right: 20px; }
+  .mockup-phone { width: 110px; }
+  .hero-trust { gap: 14px 20px; }
+
+  .about-content h2 { font-size: 1.6rem; }
+  .about-stat-chip { font-size: 0.72rem; padding: 9px 12px; }
+  .chip-1 { top: -14px; right: -10px; }
+  .chip-2 { bottom: -14px; left: -10px; }
+
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+
+  .process-list { grid-template-columns: 1fr; gap: 28px; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .stat-num { font-size: 2.1rem; }
+
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card { padding: 30px 24px; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; padding: 56px 0 36px; }
+
+  .contact-form { padding: 26px; }
+
+  .back-to-top { bottom: 18px; right: 18px; width: 42px; height: 42px; }
+}
+
+/* ---------- Small mobile ---------- */
+@media (max-width: 380px) {
+  .hero-content h1 { font-size: 1.7rem; }
+  .logo-text { font-size: 0.92rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+}
