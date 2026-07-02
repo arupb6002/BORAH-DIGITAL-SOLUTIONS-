@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Homestay · Sivasagar, Assam</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <!-- SwiperJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Playfair+Display:wght@400;600;700&display=swap');
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f9fbfd;
+            color: #1e2a3a;
+            overflow-x: hidden;
+        }
+
+        .heading {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
+        }
+
+        .inner-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navbar */
+        #navbar {
+            transition: background 0.25s ease, backdrop-filter 0.25s;
+            background: rgba(0, 139, 139, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        .nav-scrolled {
+            background: rgba(0, 139, 139, 0.98) !important;
+            box-shadow: 0 12px 30px -8px rgba(0,0,0,0.15);
+        }
+
+        /* Hero */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0, 80, 80, 0.7), rgba(0, 139, 139, 0.5)), 
+                        url('https://i.ibb.co/7dDf0Q3B/images-3.jpg') center/cover no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #f9fbfd, transparent);
+            pointer-events: none;
+        }
+
+        /* Room Cards */
+        .room-card {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 12px 28px -8px rgba(0, 50, 50, 0.08);
+        }
+        
+        .room-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 28px 44px -12px rgba(0, 139, 139, 0.25);
+        }
+
+        .btn-primary {
+            background: #d2042d;
+            transition: 0.2s;
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: #a80224;
+            transform: scale(0.97);
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            transition: 0.2s;
+            background: transparent;
+            color: white;
+        }
+        
+        .btn-outline-light:hover {
+            background: white;
+            color: #008B8B;
+        }
+
+        .btn-outline-teal {
+            border: 2px solid #008B8B;
+            transition: 0.2s;
+            background: transparent;
+            color: #008B8B;
+        }
+        
+        .btn-outline-teal:hover {
+            background: #008B8B;
+            color: white;
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            background: rgba(0, 139, 139, 0.98);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Gallery */
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 1.5rem;
+        }
+
+        /* Map */
+        .map-frame {
+            width: 100%;
+            height: 420px;
+            border: 0;
+            display: block;
+            border-radius: 1.5rem;
+        }
+
+        /* Star rating */
+        .star {
+            cursor: pointer;
+            transition: 0.15s;
+            user-select: none;
+        }
+        
+        .star:hover {
+            transform: scale(1.2);
+            color: #fbbf24;
+        }
+.contact-map{
+    width:100%;
+    height:350px;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #E5E7EB;
+}
+
+.contact-map iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+@media (max-width:768px){
+    .contact-map{
+        height:260px;
+    }
+
+        /* Swiper overrides */
+        .swiper-slide {
+            height: auto;
+        }
+
+        @media (max-width: 640px) {
+            .hero-section { min-height: 90vh; }
+            .gallery-img { height: 200px; }
+            .map-frame { height: 280px; }
+            .inner-wrap { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 text-white px-0">
+        <div class="inner-wrap flex justify-between items-center py-4 md:py-5">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-2xl text-white">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div>
+                    <span class="heading text-2xl md:text-3xl font-bold tracking-tight">Demo Homestay</span>
+                    <p class="text-[9px] uppercase tracking-[0.15em] text-teal-100 -mt-0.5">Sivasagar · Assam</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+                <a href="#about" class="hover:text-white/80 transition">About</a>
+                <a href="#rooms" class="hover:text-white/80 transition">Rooms</a>
+                <a href="#location" class="hover:text-white/80 transition">Location</a>
+                <a href="#gallery" class="hover:text-white/80 transition">Gallery</a>
+                <a href="#reviews" class="hover:text-white/80 transition">Reviews</a>
+                <a href="#amenities" class="hover:text-white/80 transition">Amenities</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="tel:999999999" class="hidden sm:flex items-center gap-2 bg-white text-[#008B8B] px-5 py-2.5 rounded-2xl font-semibold text-sm hover:bg-amber-50 transition">
+                    <i class="fas fa-phone"></i> <span>99999 99999</span>
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl p-2 -mr-2">
+                    <i id="menu-icon" class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[60] pt-24 px-8 text-white">
+        <div class="flex flex-col gap-6 text-2xl font-light">
+            <a href="#about" onclick="toggleMobileMenu()" class="py-3 border-b border-white/20">About</a>
+            <a href="#rooms" onclick="toggleMobileMenu()" class="py-3 border-b border-white/20">Rooms</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="py-3 border-b border-white/20">Location</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="py-3 border-b border-white/20">Gallery</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="py-3 border-b border-white/20">Reviews</a>
+            <a href="#amenities" onclick="toggleMobileMenu()" class="py-3 border-b border-white/20">Amenities</a>
+            <a href="#review-form" onclick="toggleMobileMenu()" class="py-3 border-b border-white/20">Post Review</a>
+            <a href="mailto:demo@borahdigitalsolutions.com" class="mt-6 py-4 bg-white text-[#008B8B] rounded-3xl text-center font-semibold">Contact</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero-section">
+        <div class="inner-wrap relative z-10 text-white text-center pt-20">
+            <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-2.5 rounded-full mb-6">
+                <span class="w-2.5 h-2.5 bg-green-300 rounded-full animate-pulse"></span>
+                <span class="uppercase tracking-[0.2em] text-xs font-medium">Now open for bookings</span>
+            </div>
+            <h1 class="heading text-5xl md:text-7xl font-bold leading-[1.1] mb-5">
+                Escape to<br />Tranquility
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg md:text-xl opacity-90 mb-10">
+                Premium homestay in Sivasagar – luxury rooms, warm Assamese hospitality &amp; timeless memories.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#rooms" class="btn-primary px-10 py-5 rounded-3xl text-lg font-semibold flex items-center gap-3 shadow-lg">
+                    <i class="fas fa-bed"></i> VIEW ROOMS
+                </a>
+                <a href="#location" class="btn-outline-light px-8 py-5 rounded-3xl text-lg font-semibold flex items-center gap-3">
+                    <i class="fas fa-map-marker-alt"></i> FIND US
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/80">
+            <span class="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+            <i class="fas fa-chevron-down text-3xl animate-bounce mt-1"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20 md:py-28 bg-white">
+        <div class="inner-wrap grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5">
+                <img src="https://i.ibb.co/GvFYN8WY/images-2.jpg" class="w-full h-auto rounded-3xl shadow-2xl" alt="homestay exterior" />
+            </div>
+            <div class="md:col-span-7">
+                <span class="inline-block text-[#008B8B] text-sm tracking-[0.2em] uppercase font-medium mb-3">Welcome home</span>
+                <h2 class="heading text-4xl md:text-5xl font-semibold leading-[1.2] mb-6">
+                    A peaceful retreat in the cultural heart of Assam
+                </h2>
+                <p class="text-lg text-gray-600 max-w-xl mb-8">
+                    Nestled near the historic Sivasagar Tank, Demo Homestay blends modern comfort with traditional Assamese warmth. Ideal for families, friends, or solo travellers.
+                </p>
+                <div class="grid grid-cols-3 gap-6">
+                    <div><span class="text-4xl font-bold text-[#008B8B]">15+</span><p class="text-xs uppercase tracking-wider text-gray-500">happy guests daily</p></div>
+                    <div><span class="text-4xl font-bold text-[#008B8B]">4</span><p class="text-xs uppercase tracking-wider text-gray-500">premium rooms</p></div>
+                    <div><span class="text-4xl font-bold text-[#008B8B]">98%</span><p class="text-xs uppercase tracking-wider text-gray-500">return rate</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROOMS with Swiper -->
+    <section id="rooms" class="py-20 md:py-28 bg-[#f0f6fa]">
+        <div class="inner-wrap">
+            <div class="text-center mb-14">
+                <span class="bg-white px-6 py-2 rounded-full text-[#008B8B] text-sm font-medium shadow-sm">accommodation</span>
+                <h2 class="heading text-4xl md:text-5xl font-semibold mt-4">Choose your perfect stay</h2>
+            </div>
+        </div>
+        
+        <div class="inner-wrap">
+            <div class="swiper roomSwiper">
+                <div class="swiper-wrapper pb-8">
+                    <!-- Room 1 -->
+                    <div class="swiper-slide">
+                        <div class="room-card">
+                            <div class="relative">
+                                <img src="https://i.ibb.co/cc9vx3n2/722099003.jpg" class="w-full h-64 object-cover" alt="Luxury AC" />
+                                <span class="absolute top-5 right-5 bg-white px-5 py-1.5 rounded-full font-bold text-[#008B8B] shadow-md">₹2,500</span>
+                            </div>
+                            <div class="p-7">
+                                <h3 class="text-2xl font-semibold">Luxury AC Suite</h3>
+                                <p class="text-emerald-700 text-sm mb-5">King bed · balcony · premium</p>
+                                <div class="flex gap-2 text-sm text-gray-500 mb-5">
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-wifi mr-1"></i>Wi-Fi</span>
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-tv mr-1"></i>TV</span>
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-snowflake mr-1"></i>AC</span>
+                                </div>
+                                <button onclick="bookNow(1)" class="w-full btn-primary py-4 rounded-2xl font-semibold text-lg">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Room 2 -->
+                    <div class="swiper-slide">
+                        <div class="room-card">
+                            <div class="relative">
+                                <img src="https://i.ibb.co/XZKjPX8v/images-1.jpg" class="w-full h-64 object-cover" alt="Standard AC" />
+                                <span class="absolute top-5 right-5 bg-white px-5 py-1.5 rounded-full font-bold text-[#008B8B] shadow-md">₹2,000</span>
+                            </div>
+                            <div class="p-7">
+                                <h3 class="text-2xl font-semibold">Standard AC Room</h3>
+                                <p class="text-emerald-700 text-sm mb-5">Queen bed · modern comfort</p>
+                                <div class="flex gap-2 text-sm text-gray-500 mb-5">
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-wifi mr-1"></i>Wi-Fi</span>
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-tv mr-1"></i>TV</span>
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-snowflake mr-1"></i>AC</span>
+                                </div>
+                                <button onclick="bookNow(2)" class="w-full btn-primary py-4 rounded-2xl font-semibold text-lg">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Room 3 -->
+                    <div class="swiper-slide">
+                        <div class="room-card">
+                            <div class="relative">
+                                <img src="https://i.ibb.co/cXhW1m9K/4e7d112e-4684-4c64-b211-9c489a2f2ce1.jpg" class="w-full h-64 object-cover" alt="Family room" />
+                                <span class="absolute top-5 right-5 bg-white px-5 py-1.5 rounded-full font-bold text-[#008B8B] shadow-md">₹3,500</span>
+                            </div>
+                            <div class="p-7">
+                                <h3 class="text-2xl font-semibold">Group Family Room</h3>
+                                <p class="text-emerald-700 text-sm mb-5">4 beds · spacious</p>
+                                <div class="flex gap-2 text-sm text-gray-500 mb-5">
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-wifi mr-1"></i>Wi-Fi</span>
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-users mr-1"></i>Family</span>
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-snowflake mr-1"></i>AC</span>
+                                </div>
+                                <button onclick="bookNow(3)" class="w-full btn-primary py-4 rounded-2xl font-semibold text-lg">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Room 4 -->
+                    <div class="swiper-slide">
+                        <div class="room-card">
+                            <div class="relative">
+                                <img src="https://i.ibb.co/8nT7cCp6/649310222.jpg" class="w-full h-64 object-cover" alt="Temporary stay" />
+                                <span class="absolute top-5 right-5 bg-white px-5 py-1.5 rounded-full font-bold text-[#008B8B] shadow-md">₹500/hr</span>
+                            </div>
+                            <div class="p-7">
+                                <h3 class="text-2xl font-semibold">Temporary Stay</h3>
+                                <p class="text-emerald-700 text-sm mb-5">Flexible · hourly</p>
+                                <div class="flex gap-2 text-sm text-gray-500 mb-5">
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-clock mr-1"></i>Flexible</span>
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fas fa-bed mr-1"></i>Comfort</span>
+                                </div>
+                                <button onclick="bookNow(4)" class="w-full btn-primary py-4 rounded-2xl font-semibold text-lg">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination !relative !mt-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMENITIES -->
+    <section id="amenities" class="py-20 md:py-28 bg-white">
+        <div class="inner-wrap">
+            <div class="text-center mb-14">
+                <span class="bg-[#f0f6fa] px-6 py-2 rounded-full text-[#008B8B] text-sm font-medium">facilities</span>
+                <h2 class="heading text-4xl md:text-5xl font-semibold mt-4">Everything you need</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-[#f0f6fa] p-8 rounded-3xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-wifi text-4xl text-[#008B8B] mb-4"></i>
+                    <p class="font-semibold">Free Wi-Fi</p>
+                </div>
+                <div class="bg-[#f0f6fa] p-8 rounded-3xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-car text-4xl text-[#008B8B] mb-4"></i>
+                    <p class="font-semibold">Free Parking</p>
+                </div>
+                <div class="bg-[#f0f6fa] p-8 rounded-3xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-snowflake text-4xl text-[#008B8B] mb-4"></i>
+                    <p class="font-semibold">Air Conditioning</p>
+                </div>
+                <div class="bg-[#f0f6fa] p-8 rounded-3xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-concierge-bell text-4xl text-[#008B8B] mb-4"></i>
+                    <p class="font-semibold">Room Service</p>
+                </div>
+                <div class="bg-[#f0f6fa] p-8 rounded-3xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-bolt text-4xl text-[#008B8B] mb-4"></i>
+                    <p class="font-semibold">Power Backup</p>
+                </div>
+                <div class="bg-[#f0f6fa] p-8 rounded-3xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-bath text-4xl text-[#008B8B] mb-4"></i>
+                    <p class="font-semibold">Attached Bathroom</p>
+                </div>
+                <div class="bg-[#f0f6fa] p-8 rounded-3xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-tv text-4xl text-[#008B8B] mb-4"></i>
+                    <p class="font-semibold">TV</p>
+                </div>
+                <div class="bg-[#f0f6fa] p-8 rounded-3xl text-center hover:shadow-lg transition">
+                    <i class="fas fa-headset text-4xl text-[#008B8B] mb-4"></i>
+                    <p class="font-semibold">24×7 Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="py-20 md:py-28 bg-[#f0f6fa]">
+        <div class="inner-wrap grid md:grid-cols-2 gap-14">
+            <div>
+                <h2 class="heading text-4xl md:text-5xl font-semibold mb-5">Find us easily</h2>
+                <p class="text-lg text-gray-600 mb-8">Near the iconic Sivasagar Tank &amp; historical sites. Just 10 min from town centre.</p>
+                <div class="flex items-start gap-5 mb-8">
+                    <i class="fas fa-map-marker-alt text-3xl text-[#008B8B] mt-1"></i>
+                    <div>
+                        <div class="font-semibold text-xl">Demo Homestay</div>
+                        <div class="text-gray-600">Sivasagar, Assam 785640</div>
+                    </div>
+                </div>
+                <a href="https://maps.app.goo.gl/dGhf35tKQGZ3ZfKr8?g_st=ac" target="_blank" class="inline-flex items-center gap-3 bg-[#008B8B] text-white px-8 py-5 rounded-3xl font-semibold hover:bg-[#006f6f] transition shadow-md">
+                    <i class="fas fa-directions"></i> GET DIRECTIONS
+                </a>
+            </div>
+<div class="contact-map">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3555.449409667969!2d94.63290219999999!3d26.98433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x374731006c98b997%3A0x12d1c9495b82d586!2sClock%20Tower%2C%20Sivasagar!5e0!3m2!1sen!2sin!4v1783010111810!5m2!1sen!2sin"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+</div>
+    </section>
+
+    <!-- GALLERY with Swiper -->
+    <section id="gallery" class="py-20 md:py-28 bg-white">
+        <div class="inner-wrap">
+            <div class="text-center mb-14">
+                <span class="bg-[#f0f6fa] px-6 py-2 rounded-full text-[#008B8B] text-sm font-medium">visual stories</span>
+                <h2 class="heading text-4xl md:text-5xl font-semibold mt-4">Gallery</h2>
+            </div>
+            <div class="swiper gallerySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/7dDf0Q3B/images-3.jpg" class="gallery-img" alt="Gallery 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/GvFYN8WY/images-2.jpg" class="gallery-img" alt="Gallery 2" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/cc9vx3n2/722099003.jpg" class="gallery-img" alt="Gallery 3" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/XZKjPX8v/images-1.jpg" class="gallery-img" alt="Gallery 4" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/cXhW1m9K/4e7d112e-4684-4c64-b211-9c489a2f2ce1.jpg" class="gallery-img" alt="Gallery 5" />
+                    </div>
+                </div>
+                <div class="swiper-pagination !relative !mt-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="py-20 md:py-28 bg-[#f0f6fa]">
+        <div class="inner-wrap">
+            <div class="text-center mb-14">
+                <span class="bg-white px-6 py-2 rounded-full text-[#008B8B] text-sm font-medium shadow-sm">testimonials</span>
+                <h2 class="heading text-4xl md:text-5xl font-semibold mt-4">What guests say</h2>
+            </div>
+            
+            <div class="swiper reviewSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="bg-white p-8 rounded-3xl shadow-sm">
+                            <div class="flex text-3xl text-amber-400 mb-3">★★★★★</div>
+                            <p class="italic text-gray-700">"Excellent stay. Clean rooms and peaceful atmosphere. Will definitely come back!"</p>
+                            <div class="mt-6 flex items-center gap-4">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-[#008B8B]"><i class="fas fa-user"></i></div>
+                                <div><div class="font-semibold">Ankita Saikia</div><div class="text-xs text-gray-400">Guwahati</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white p-8 rounded-3xl shadow-sm">
+                            <div class="flex text-3xl text-amber-400 mb-3">★★★★★</div>
+                            <p class="italic text-gray-700">"Perfect for family trips. Very comfortable and well-maintained property."</p>
+                            <div class="mt-6 flex items-center gap-4">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-[#008B8B]"><i class="fas fa-user"></i></div>
+                                <div><div class="font-semibold">Rajesh Sharma</div><div class="text-xs text-gray-400">Delhi</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white p-8 rounded-3xl shadow-sm">
+                            <div class="flex text-3xl text-amber-400 mb-3">★★★★☆</div>
+                            <p class="italic text-gray-700">"Affordable and comfortable. Great value for money in a serene location."</p>
+                            <div class="mt-6 flex items-center gap-4">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-[#008B8B]"><i class="fas fa-user"></i></div>
+                                <div><div class="font-semibold">Sneha Patel</div><div class="text-xs text-gray-400">Mumbai</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white p-8 rounded-3xl shadow-sm">
+                            <div class="flex text-3xl text-amber-400 mb-3">★★★★★</div>
+                            <p class="italic text-gray-700">"Very friendly host and lovely property. Felt like home away from home."</p>
+                            <div class="mt-6 flex items-center gap-4">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-[#008B8B]"><i class="fas fa-user"></i></div>
+                                <div><div class="font-semibold">Vikram Singh</div><div class="text-xs text-gray-400">Assam</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination !relative !mt-4"></div>
+            </div>
+        </div>
+    </section>
+
+<!-- QUERY SECTION -->
+<section id="query" class="py-20 md:py-28 bg-white">
+    <div class="inner-wrap max-w-2xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="bg-[#f0f6fa] px-6 py-2 rounded-full text-[#008B8B] text-sm font-medium">get in touch</span>
+            <h2 class="heading text-4xl md:text-5xl font-semibold mt-4">Have a question?</h2>
+            <p class="text-gray-500 mt-3">We're here to help. Reach out to us anytime.</p>
+        </div>
+
+        <form id="queryForm" class="bg-[#f0f6fa] rounded-3xl p-8 md:p-12" onsubmit="submitQuery(event)">
+            <!-- Name -->
+            <div class="mb-6">
+                <label for="queryName" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Full Name <span class="text-red-500">*</span>
+                </label>
+                <input 
+                    type="text" 
+                    id="queryName" 
+                    required 
+                    placeholder="Enter your full name"
+                    class="w-full rounded-2xl border-0 p-4 focus:ring-2 focus:ring-[#008B8B] shadow-sm bg-white"
+                />
+            </div>
+
+            <!-- Phone Number -->
+            <div class="mb-6">
+                <label for="queryPhone" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Phone Number <span class="text-red-500">*</span>
+                </label>
+                <input 
+                    type="tel" 
+                    id="queryPhone" 
+                    required 
+                    placeholder="Enter your phone number"
+                    class="w-full rounded-2xl border-0 p-4 focus:ring-2 focus:ring-[#008B8B] shadow-sm bg-white"
+                />
+            </div>
+
+            <!-- Address (Optional) -->
+            <div class="mb-6">
+                <label for="queryAddress" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Address <span class="text-gray-400 text-xs">(optional)</span>
+                </label>
+                <input 
+                    type="text" 
+                    id="queryAddress" 
+                    placeholder="Enter your address"
+                    class="w-full rounded-2xl border-0 p-4 focus:ring-2 focus:ring-[#008B8B] shadow-sm bg-white"
+                />
+            </div>
+
+            <!-- Message -->
+            <div class="mb-8">
+                <label for="queryMessage" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Message <span class="text-red-500">*</span>
+                </label>
+                <textarea 
+                    id="queryMessage" 
+                    rows="5" 
+                    required 
+                    placeholder="Write your query here..."
+                    class="w-full rounded-2xl border-0 p-4 focus:ring-2 focus:ring-[#008B8B] shadow-sm bg-white resize-y"
+                ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button 
+                type="submit" 
+                class="w-full btn-primary py-5 rounded-3xl text-lg font-semibold flex items-center justify-center gap-3 transition"
+            >
+                <i class="fas fa-paper-plane"></i> SEND QUERY
+            </button>
+        </form>
+    </div>
+</section>
+
+    <!-- REVIEW FORM -->
+    <section id="review-form" class="py-20 md:py-28 bg-white">
+        <div class="inner-wrap max-w-2xl mx-auto text-center">
+            <h2 class="heading text-4xl md:text-5xl font-semibold mb-3">Leave a Review</h2>
+            <p class="text-gray-500 mb-10">Share your experience on Google Maps</p>
+            <div class="bg-[#f0f6fa] rounded-3xl p-8 md:p-12">
+                <div id="stars" class="flex justify-center gap-3 text-5xl text-gray-300 mb-8">
+                    <span onclick="setRating(1)" class="star">★</span>
+                    <span onclick="setRating(2)" class="star">★</span>
+                    <span onclick="setRating(3)" class="star">★</span>
+                    <span onclick="setRating(4)" class="star">★</span>
+                    <span onclick="setRating(5)" class="star">★</span>
+                </div>
+                <textarea id="review-msg" rows="5" class="w-full rounded-2xl border-0 p-5 focus:ring-2 focus:ring-[#008B8B] shadow-sm" placeholder="Share your experience..."></textarea>
+                <button onclick="submitReview()" class="mt-8 w-full btn-primary py-5 rounded-3xl text-lg font-semibold flex items-center justify-center gap-3">
+                    <i class="fas fa-arrow-right"></i> POST ON GOOGLE MAPS
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="py-20 bg-[#008B8B] text-white">
+        <div class="inner-wrap text-center">
+            <h2 class="heading text-4xl md:text-5xl font-semibold mb-6">Get in Touch</h2>
+            <p class="text-teal-100 mb-10">We'd love to hear from you</p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+                <div>
+                    <i class="fas fa-envelope text-3xl mb-3"></i>
+                    <p class="font-semibold">Email</p>
+                    <p class="text-teal-100 text-sm">demo@borahdigitalsolutions.com</p>
+                </div>
+                <div>
+                    <i class="fas fa-phone text-3xl mb-3"></i>
+                    <p class="font-semibold">Phone</p>
+                    <p class="text-teal-100 text-sm">+91 99999 99999</p>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt text-3xl mb-3"></i>
+                    <p class="font-semibold">Address</p>
+                    <p class="text-teal-100 text-sm">Sivasagar, Assam, India</p>
+                </div>
+            </div>
+            <div class="flex justify-center gap-6 mt-10 text-2xl">
+                <i class="fab fa-facebook-f cursor-pointer hover:text-teal-200 transition"></i>
+                <i class="fab fa-instagram cursor-pointer hover:text-teal-200 transition"></i>
+                <i class="fab fa-whatsapp cursor-pointer hover:text-teal-200 transition"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#006f6f] text-white py-8">
+        <div class="inner-wrap text-center">
+            <div class="heading text-xl font-light tracking-wide mb-2">DEMO HOMESTAY</div>
+            <div class="text-xs opacity-50">© 2026 · Built as a demo by Borah Digital Solutions</div>
+        </div>
+    </footer>
+
+    <!-- SwiperJS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <script>
+      // Query form submission
+function submitQuery(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('queryName').value.trim();
+    const phone = document.getElementById('queryPhone').value.trim();
+    const message = document.getElementById('queryMessage').value.trim();
+    
+    // Validate mandatory fields
+    if (!name) {
+        alert('Please enter your name.');
+        document.getElementById('queryName').focus();
+        return;
+    }
+    
+    if (!phone) {
+        alert('Please enter your phone number.');
+        document.getElementById('queryPhone').focus();
+        return;
+    }
+    
+    if (!message) {
+        alert('Please enter your message.');
+        document.getElementById('queryMessage').focus();
+        return;
+    }
+    
+    // Show success popup
+    alert('✅ Query sent successfully!\n\nWe will get back to you shortly.');
+    
+    // Reset form
+    document.getElementById('queryForm').reset();
+}
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = 'fas fa-times';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Room booking
+        function bookNow(id) {
+            const rooms = [
+                { name: 'Luxury AC Suite', price: '₹2,500/night' },
+                { name: 'Standard AC Room', price: '₹2,000/night' },
+                { name: 'Group Family Room', price: '₹3,500/night' },
+                { name: 'Temporary Stay', price: '₹500/hour' }
+            ];
+            const room = rooms[id - 1];
+            alert('✅ Booking request for ' + room.name + ' – ' + room.price + '\n\nThank you! Our team will contact you shortly. (Demo)');
+        }
+
+        // Rating system
+        let rating = 0;
+        
+        function setRating(r) {
+            rating = r;
+            const stars = document.querySelectorAll('#stars .star');
+            stars.forEach(function(star, index) {
+                if (index < r) {
+                    star.style.color = '#fbbf24';
+                } else {
+                    star.style.color = '#d1d5db';
+                }
+            });
+        }
+
+        // Submit review
+        function submitReview() {
+            const msg = document.getElementById('review-msg').value.trim();
+            if (rating === 0) {
+                alert('Please select a star rating.');
+                return;
+            }
+            alert('⭐ ' + rating + ' stars · Thank you for your review! Redirecting to Google Maps...');
+            setTimeout(function() {
+                window.open('https://maps.app.goo.gl/dGhf35tKQGZ3ZfKr8?g_st=ac', '_blank');
+            }, 500);
+        }
+
+        // Close mobile menu with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('mobile-menu');
+                if (!menu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+
+        // SwiperJS - Rooms
+        const roomSwiper = new Swiper('.roomSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            pagination: {
+                el: '.roomSwiper .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 32,
+                }
+            }
+        });
+
+        // SwiperJS - Gallery
+        const gallerySwiper = new Swiper('.gallerySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.gallerySwiper .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                }
+            }
+        });
+
+        // SwiperJS - Reviews
+        const reviewSwiper = new Swiper('.reviewSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            pagination: {
+                el: '.reviewSwiper .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 32,
+                }
+            }
+        });
+
+        console.log('✅ Demo Homestay – fully loaded');
+        console.log('💚 Hand-crafted with care by Borah Digital Solutions');
+    </script>
+</body>
+</html>
