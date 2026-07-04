@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', function () {
+  var offerPopup = document.getElementById('offerPopup');
+  var claimLaterBtn = document.getElementById('claimLaterBtn');
+
+  if (offerPopup) {
+    setTimeout(function () {
+      offerPopup.classList.add('show');
+    }, 400);
+  }
+
+  if (claimLaterBtn) {
+    claimLaterBtn.addEventListener('click', function () {
+      offerPopup.classList.remove('show');
+    });
+  }
+});
+
 /* ===========================================================
    Borah Digital Solutions — script.js
    Vanilla JS: nav toggle, sticky header shadow, scroll reveal,

@@ -37,13 +37,13 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+    <!-- Font Awesome -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="responsive.css">
-  
-  <!-- Fevicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
   <!-- Structured Data: Local Business -->
   <script type="application/ld+json">
@@ -162,14 +162,14 @@
         <ul>
           <li><a href="#home" class="nav-link active-link">Home</a></li>
           <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="/DEMO/homestay.html" class="nav-link">Portfolio</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <a href="#contact" class="btn btn-primary nav-cta">Get Free Consultation</a>
+      <a href="tel:+919876543210" class="btn btn-primary nav-cta">Get Free Consultation</a>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
         <span></span><span></span><span></span>
@@ -178,6 +178,16 @@
   </header>
 
   <main id="main">
+<!-- ============ OFFER POPUP ============ -->
+<div id="offerPopup" class="offer-popup">
+  <div class="offer-box">
+    <img src="https://i.ibb.co/VWwng9fZ/100209117.jpg" alt="Special Offer" class="offer-img">
+    <div class="offer-actions">
+      <a href="#" id="claimNowBtn" class="btn btn-primary">Claim Now</a>
+      <button type="button" id="claimLaterBtn" class="btn btn-outline">Claim Later</button>
+    </div>
+  </div>
+</div>
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="home">
@@ -187,8 +197,10 @@
           <h1>Websites Built to Grow Your Business</h1>
           <p class="hero-sub">We design and develop fast, modern websites that turn visitors into customers — from first sketch through launch, and the support that keeps it running.</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Get Free Consultation</a>
-            <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+            <a href="tel:+919876543210" class="btn btn-primary">Get Free Consultation</a>
+         
+            <a href="portfolio.html" class="btn btn-outline">View Our Work</a> 
+            
           </div>
           <ul class="hero-trust">
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Mobile-first builds</li>
@@ -417,96 +429,21 @@
     </section>
  ============ -->
  
-    <!-- ============ PORTFOLIO ============ 
-    <section class="portfolio" id="portfolio">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Our Work</p>
-          <h2>Recent Projects</h2>
-          <p class="section-sub">A few examples of the kind of websites we build. Add your own case studies here as projects wrap up.</p>
-        </div>
 
-        <div class="portfolio-grid">
-          <div class="portfolio-card reveal">
-            <div class="port-preview preview-a">
-              <div class="port-bar"><span></span><span></span><span></span></div>
-              <div class="port-body">
-                <div class="port-line w-50"></div>
-                <div class="port-line w-30"></div>
-                <div class="port-blocks"><div></div><div></div><div></div></div>
-              </div>
-            </div>
-            <div class="portfolio-info">
-              <span class="port-tag">Business Website</span>
-              <h3>Local Consulting Firm</h3>
-              <a href="#" class="port-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-            </div>
-          </div>
-
-          <div class="portfolio-card reveal">
-            <div class="port-preview preview-b">
-              <div class="port-bar"><span></span><span></span><span></span></div>
-              <div class="port-body">
-                <div class="port-line w-60"></div>
-                <div class="port-grid-mini"><div></div><div></div><div></div><div></div></div>
-              </div>
-            </div>
-            <div class="portfolio-info">
-              <span class="port-tag">E-commerce</span>
-              <h3>Boutique Online Store</h3>
-              <a href="#" class="port-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-            </div>
-          </div>
-
-          <div class="portfolio-card reveal">
-            <div class="port-preview preview-c">
-              <div class="port-bar"><span></span><span></span><span></span></div>
-              <div class="port-body">
-                <div class="port-line w-40 center"></div>
-                <div class="port-line w-25 center"></div>
-                <div class="port-cta-mini"></div>
-              </div>
-            </div>
-            <div class="portfolio-info">
-              <span class="port-tag">Landing Page</span>
-              <h3>Product Launch Page</h3>
-              <a href="#" class="port-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-            </div>
-          </div>
-
-          <div class="portfolio-card reveal">
-            <div class="port-preview preview-d">
-              <div class="port-bar"><span></span><span></span><span></span></div>
-              <div class="port-body">
-                <div class="port-line w-50"></div>
-                <div class="port-line w-70"></div>
-                <div class="port-blocks"><div></div><div></div></div>
-              </div>
-            </div>
-            <div class="portfolio-info">
-              <span class="port-tag">Restaurant Website</span>
-              <h3>Local Restaurant &amp; Menu Site</h3>
-              <a href="#" class="port-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-     ============ -->
 
     <!-- ============ STATS ============ -->
     <section class="stats" id="stats">
       <div class="container stats-grid">
         <div class="stat-item reveal">
-          <span class="stat-num" data-count="8">0</span><span class="stat-plus">+</span>
+          <span class="stat-num" data-count="28">0</span><span class="stat-plus">+</span>
           <p>Projects Completed</p>
         </div>
         <div class="stat-item reveal">
-          <span class="stat-num" data-count="6">0</span><span class="stat-plus">+</span>
+          <span class="stat-num" data-count="20">0</span><span class="stat-plus">+</span>
           <p>Happy Clients</p>
         </div>
         <div class="stat-item reveal">
-          <span class="stat-num" data-count="2">0</span><span class="stat-plus">+</span>
+          <span class="stat-num" data-count="1">0</span><span class="stat-plus">+</span>
           <p>Years Experience</p>
         </div>
         <div class="stat-item reveal">
@@ -761,7 +698,7 @@
         <p>A web design and development studio based in Sivasagar, Assam, building fast, modern websites for small and growing businesses.</p>
         <div class="footer-social">
           <a href="mailto:borahdigitalsolutions@rediffmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://wa.me/916002148763?text=Hi%20Borah%20Digital%20Solutions" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://wa.me/+964780 7118164?text=I%20Want%20to%20Make%20a%20Website" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
 
@@ -781,7 +718,7 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
